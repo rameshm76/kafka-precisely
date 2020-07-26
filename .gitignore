@@ -1,0 +1,26 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+**/build/
+!src/**/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# Ignore the logs
+kafka/logs
+
+# Ignore bin
+bin/
+
+# Java
+.classpath
+.project
+.settings
