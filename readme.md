@@ -7,6 +7,7 @@
 - Topics
 - Producers
 - Consumers
+  - Consumer Groups
 
 ## Zookeeper
 
@@ -81,7 +82,7 @@ specific partition, the order of the words you consumed could be different
 kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic alphabet --from-beginning
 ```
 
-## Consumer OffSets Topic
+### Consumer OffSets Topic
 
 Kafka will create **__consumer_offsets** topic to keep track of the offsets for each client. If we
 donot pass the **--from-beginning** the consumer will receive only the latest messages publushed
@@ -97,6 +98,44 @@ There are three variants of offsets.
 - latest
 - from a specific offset
   - Only possible using api calls
+
+### Consumer Groups
+
+Whenever a new consumer is created using console, a new consumer group will be created. If two
+clients use the same group.id, then they concurrently process the messages published.
+
+One can view list of consumer groups using the following command.
+
+```sh
+kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+```
+
+To view all consumer groups and, their offsets, run the below command.
+
+```sh
+kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe  --all-groups
+```
+
+To view a specific consumer group(for example: **console-consumer-7160**) offset run the following
+command using the correct consumer group id
+
+```sh
+kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group console-consumer-71600
+```
+
+### Describing topics
+
+The following command describes all the available topics
+
+```sh
+kafka/bin/kafka-topics.sh --describe --zookeeper localhost:2181
+```
+
+The following command describes **alphabet** topic.
+
+```sh
+kafka/bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic alphabet
+```
 
 ## Message Ordering
 
