@@ -83,11 +83,20 @@ kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic al
 
 ## Consumer OffSets Topic
 
-Kafka will create **__consumer_offsets** topic to keep track of the offsets for each client
+Kafka will create **__consumer_offsets** topic to keep track of the offsets for each client. If we
+donot pass the **--from-beginning** the consumer will receive only the latest messages publushed
+after the consumer is available.
 
 ```sh
 kafka/bin/kafka-topics.sh --list --zookeeper localhost:2181
 ```
+
+There are three variants of offsets.
+
+- from-beginning
+- latest
+- from a specific offset
+  - Only possible using api calls
 
 ## Message Ordering
 
