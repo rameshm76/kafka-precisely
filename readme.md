@@ -49,16 +49,34 @@ kafka/bin/kafka-server-start.sh kafka/config/server.properties
 
 ## Topics
 
+### Creating a topic
+
 Create a non-replicated topic. And list the topics available. The replication-factor must be <= brokers available at the time of creation
 
 ```sh
 kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181  --replication-factor 1 --partitions 4 --topic alphabet
 ```
 
+### Listing the topics
+
 List the topics available
 
 ```sh
 kafka/bin/kafka-topics.sh --list --zookeeper localhost:2181
+```
+
+### Describing topics
+
+The following command describes all the available topics
+
+```sh
+kafka/bin/kafka-topics.sh --describe --zookeeper localhost:2181
+```
+
+The following command describes **alphabet** topic.
+
+```sh
+kafka/bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic alphabet
 ```
 
 ## Producers
@@ -121,20 +139,6 @@ command using the correct consumer group id
 
 ```sh
 kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group console-consumer-71600
-```
-
-### Describing topics
-
-The following command describes all the available topics
-
-```sh
-kafka/bin/kafka-topics.sh --describe --zookeeper localhost:2181
-```
-
-The following command describes **alphabet** topic.
-
-```sh
-kafka/bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic alphabet
 ```
 
 ## Message Ordering
