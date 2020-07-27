@@ -141,6 +141,19 @@ command using the correct consumer group id
 kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group console-consumer-71600
 ```
 
+### Consumer explicit Group
+
+A group of consumers can use the same group id to consume messages collectively.
+
+Stop the existing producers and consumers and, run the following. The messages produced will be
+consumed by both the consumers. A single message wont be consumed by both consumers.
+
+```sh
+kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic alphabet --group test
+kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic alphabet --group test
+kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic alphabet
+```
+
 ## Message Ordering
 
 Messages are sent usually as key & value pairs. In the previous example, we didn't  provide the
