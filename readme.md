@@ -327,4 +327,5 @@ rm -rf /tmp/{kafka-logs-{0,1,2},zookeeper}
 ## References
 
 [Kafka DefaultPartitioner algorithm](https://stackoverflow.com/questions/39791349/kafka-defaultpartitioner-algorithm)
+
 [In Sync Replica - Throuhtput](https://stackoverflow.com/questions/52215953/does-min-insync-replica-configuration-affect-kafka-producer-throughput)
